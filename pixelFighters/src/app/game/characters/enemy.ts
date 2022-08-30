@@ -69,7 +69,6 @@ export class EnemyPlayer extends Character{
       if(this.isAlive()){
         this.count +=1;
 
-      console.log(`count: ${this.count}`);
 
         if(this.count % 3 == 0 && this.timeElapsed >= 500){
           this.attacking = true;
@@ -91,7 +90,6 @@ export class EnemyPlayer extends Character{
           this.stop();
         }
       }else{
-        console.log('dead');
         this.stop();
       }
     }
@@ -101,8 +99,6 @@ export class EnemyPlayer extends Character{
 
       let direction = 'left';
       let random = Phaser.Math.Between(0,config.width);
-      console.log(`${enemyCoordinate} vs ${Math.floor(this.x)}`);
-      console.log(this.speed);
 
       
       
@@ -116,17 +112,6 @@ export class EnemyPlayer extends Character{
           this.setVelocityX(-1*this.speed);
           
           this.play(character.RUN, true);
-          /*
-          this.scene.time.addEvent({
-            
-            delay: 800,
-            
-            callback: ()=>{
-                
-            },
-          });
-          */
-          console.log('left it is');
         
   
         }else if(Math.floor(enemyCoordinate - 30) > Math.floor(this.x)){
@@ -136,13 +121,11 @@ export class EnemyPlayer extends Character{
           this.flipX = false;
           this.play(character.RUN, true);
           this.prevTime = time;
-          console.log('right');
           
         }
         else{
           this.setVelocityX(0);
           this.play(character.IDLE, true);
-          console.log('slow enemy');
           this.decideMovement(character,time);
         }
       }

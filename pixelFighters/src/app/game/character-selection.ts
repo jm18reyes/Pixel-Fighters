@@ -30,7 +30,6 @@ export class CharacterSelectionService{
         this.characterSelected = skin;
         
         sessionStorage.setItem('characterSelected',JSON.stringify(this.characterSelected));
-        //this.characterSelectedObservable.next(skin);
 
     }
 

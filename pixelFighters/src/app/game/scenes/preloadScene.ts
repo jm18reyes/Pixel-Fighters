@@ -12,7 +12,6 @@ export default class PreloadScene extends Phaser.Scene {
     super({ key: 'PreloadScene' })
 
     sessionStorage.clear();
-    console.log('halu lowie');
   }
 
   preload() {

@@ -1,4 +1,4 @@
-import { CharacterService } from "../character.service";
+
 
 export default class CollisionHandler{
 
@@ -19,24 +19,18 @@ export default class CollisionHandler{
 
   hurtEnemy(player:any, enemy:any):void{
     if(player.isAttacking() && enemy.isAlive()){
-      console.log('damaged');
+
       if(enemy.isBlocking()){
-        console.log('blocked');
-        //enemy.play('block');
       }
       else{
         
         enemy.takeDamage(player.attackDamage);
-        //enemy.play('hurt');
       }
     }
     else if (!enemy.isAlive()) {
-      //enemy.anims.playAfterDelay('dead', 500);
-      console.log('hey someone is knocked out');
       enemy.destroy();
 
       this.enemyDead = true;
-      console.log('hey someone is knocked out');
       
     }
     

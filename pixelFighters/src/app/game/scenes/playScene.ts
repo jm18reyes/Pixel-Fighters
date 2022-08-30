@@ -3,8 +3,6 @@ import { EnemyPlayer } from "../characters/enemy";
 import { SKINS, ANIMSKEY } from "../constants";
 import { createCharacterAnimations } from "../helpers/animations";
 import { loadBikerAssets, loadCyborgAssets, loadPunkAssets } from "../helpers/characterLoaders";
-//import CollisionHandler, { hurtEnemy } from "../helpers/collisionHandler";
-import { CharacterService } from "../character.service";
 import CollisionHandler from "../helpers/collisionHandler";
 import { Inject, OnInit } from "@angular/core";
 import { MatchResultService } from "../match-result.service";
@@ -31,25 +29,6 @@ export default class PlayScene extends Phaser.Scene{
 
   constructor() {
     super({ key: 'PlayScene' })
-    console.log('halu lowie 3');
-    /*
-    const characterService = new CharacterService();
-    this.playerCharacterSub = characterService.getPlayerCharacter().subscribe((playerCharacter:any) =>{
-      
-      this.playerCharacter = playerCharacter;
-    });
-
-    this.enemyCharacterSub = characterService.getEnemyCharacter().subscribe((enemyCharacter:any) =>{
-      this.enemyCharacter = enemyCharacter;
-    });
-    */
-
-    
-
-    
-
-
-    
 
     
   }
@@ -61,23 +40,15 @@ export default class PlayScene extends Phaser.Scene{
     console.log('create method');
 
     const characterSelection = new CharacterSelectionService();
-
     this.playerCharacter = characterSelection.getCharacterSelected();
 
     this.enemyCharacter = characterSelection.getEnemyCharacter();
 
-    console.log(`chosen: ${this.playerCharacter.CHARACTER}`);
-   
 
     let background = this.add.image(0,0,SKINS.BACKGROUND);
     background.setOrigin(0,0);
     background.scale = 2;
 
-    /*
-    createCharacterAnimations(this,SKINS.BIKER);
-     
-    createCharacterAnimations(this,SKINS.CYBORG);
-    */
 
     createCharacterAnimations(this,this.playerCharacter);
      
@@ -100,10 +71,6 @@ export default class PlayScene extends Phaser.Scene{
 
     this.cursor = this.input.keyboard.createCursorKeys();
 
-    /*
-    this.physics.add.overlap(this.player,this.enemy,hurtEnemy);
-    this.physics.add.overlap(this.enemy,this.player,hurtEnemy);
-    */
 
     this.collisionPlayer = new CollisionHandler(this,this.player,this.enemy);
     this.collisionEnemy = new CollisionHandler(this,this.enemy,this.player);
@@ -123,18 +90,15 @@ export default class PlayScene extends Phaser.Scene{
   moveToEnding(playerIsAlive:boolean, enemyIsAlive:boolean):void{
     this.matchResultService = new MatchResultService();
     if(playerIsAlive === false){
-      console.log('enemy win');
       const enemyWinner:string = 'enemy';
       this.matchResultService.setSurvivor('enemy');
       this.scene.start('EndingScene');
     }
     else if(enemyIsAlive === false){
-      console.log('player win');
       this.matchResultService.setSurvivor('player');
       this.scene.start('EndingScene');
     }
     else{
-      console.log(`fight is not done ${playerIsAlive} - ${enemyIsAlive}`);
     }
     
   }
