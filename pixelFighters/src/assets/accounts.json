@@ -1,0 +1,9 @@
+[
+    {
+        "id":"1",
+        "accountName":"Player1",
+        "accountImageUrl":"assets/player1.png",
+        "accountLevel":1,
+        "accountExperience":0
+    }
+]

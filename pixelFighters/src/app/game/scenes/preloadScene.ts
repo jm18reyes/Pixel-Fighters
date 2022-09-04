@@ -48,7 +48,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     startBtn.on('pointerdown',(e:any)=>{
       console.log(e);
-      this.scene.start('MenuScene');
+      this.scene.start('InstructionScene');
     },this);
     // 
     

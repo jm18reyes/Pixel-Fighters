@@ -25,7 +25,7 @@ export class HealthBar {
     decrease (amount:number)
     {
         this.value -= amount;
-        console.log(`health ${this.value}`);
+        //console.log(`health ${this.value}`);
         if (this.value < 0)
         {
             this.value = 0;

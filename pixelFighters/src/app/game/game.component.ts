@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
-import config from './config';
 import config2 from './config2';
 
 @Component({

@@ -2,6 +2,7 @@ import PreloadScene from "./scenes/preloadScene";
 import PlayScene from "./scenes/playScene";
 import MenuScene from "./scenes/menuScene";
 import EndingScene from "./scenes/endingScene";
+import InstructionScene from "./scenes/instructionScene";
 
 
 
@@ -12,7 +13,7 @@ const config = {
       transparent:true,
       
       backgroundColor: '#4488aa',
-      scene: [PreloadScene, MenuScene,PlayScene, EndingScene],
+      scene: [PreloadScene,InstructionScene, MenuScene,PlayScene, EndingScene],
       parent: 'gameContainer',
       physics: {
         default: 'arcade',
